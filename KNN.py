@@ -12,9 +12,9 @@ import operator
 
 #给出训练数据及其对应的类别
 def createDataSet():
-    group = array([[1.0,2.0],[1.2,0.1],[0.1,1.4],[0.3,3.5]])
+    dataSet = array([[1.0,2.0],[1.2,0.1],[0.1,1.4],[0.3,3.5]])
     labels= ['A','A','B','B']
-    return group, labels
+    return dataSet, labels
 
 #计算欧式距离
 def calcDistance(input, dataSet):
