@@ -1,14 +1,13 @@
 #coding:utf-8
 
-from numpy import *
-import operator
-
 #1.计算测试数据与各个训练数据的距离
 #2.按距离排序
 #3.取距离最小的K个点
 #4.统计K个点所在类别出现的频率（次数）
 #5.返回K个点中出现频率最高的类别，作为测试数据的预测分类
 
+from numpy import *
+import operator
 
 #给出训练数据及其对应的类别
 def createDataSet():
