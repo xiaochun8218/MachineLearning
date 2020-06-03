@@ -12,7 +12,7 @@
     #b.选择信息增益最大的特征属性
     #c.循环该特征属性的各个取值
     #d.划分得到子数据集、子特征属性列表
-    #e.递归构造
+    #e.递归
 
 #2.使用matplotlib 注解绘制树形图
 
@@ -70,7 +70,7 @@ def calcShang(dataSet):
     return shannonEnt
 
 #按第i个特征属性划分数据集
-def splitDataSet(dataSet, i, value): #数据集, 第i个特征, 需要的该特征的值
+def splitDataSet(dataSet, i, value): #传入参数：数据集, 第i个特征, 需要的该特征的值
     retDataSet = []
     for data in dataSet:
         if data[i] == value:
@@ -84,14 +84,14 @@ def chooseBestFeature(dataSet):
     baseEnt = calcShang(dataSet)     #数据集的香农熵
     featureNum = len(dataSet[0]) - 1 #特征属性个数
     bestInfoGain = 0.0
-    bestFeature = -1
+    bestFeature = -1                 #属性位置pos
     for i in range(0, featureNum):
         newEnt = 0.0
         featureList = [example[i] for example in dataSet] #第i个特征属性的所有取值
         uniqueVals = set(featureList)                     #去重
         for value in uniqueVals:                          #按该特征属性的各个值划分数据集
             dataSetNew = splitDataSet(dataSet, i, value)
-            prob = len(dataSetNew) / len(dataSet)
+            prob = float(len(dataSetNew)) / len(dataSet)
             newEnt += prob * calcShang(dataSetNew)        #计算样本熵
         InfoGain = baseEnt - newEnt                       #计算信息增益
         if InfoGain > bestInfoGain:
